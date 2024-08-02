@@ -3,10 +3,16 @@ local options = {
     lua = { "stylua" },
     css = { "prettier" },
     html = { "prettier" },
-    typescript = { "eslint_d" },
-    javascript = { "eslint_d" },
-    vue = {
+    typescript = {
       -- { "prettierd", "prettier" },
+      "eslint_d",
+    },
+    javascript = {
+      { "prettierd", "prettier" },
+      "eslint_d",
+    },
+    vue = {
+      { "prettierd", "prettier" },
       "eslint_d",
     },
     json = { "prettier" },

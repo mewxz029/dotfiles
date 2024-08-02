@@ -1,7 +1,1 @@
-{
-  "flagWords":[],
-  "language":"en",
-  "words": ["codespell", "tailwindcss", "nvim"],
-  "ignoreRegExpList": ["/[\\u0E00-\\u0E7F]/g"],
-  "version":"0.2"
-}
+{"version":"0.2","ignoreRegExpList":["\/[\\u0E00-\\u0E7F]\/g"],"words":["codespell","tailwindcss","nvim","folke"],"language":"en","flagWords":[]}
