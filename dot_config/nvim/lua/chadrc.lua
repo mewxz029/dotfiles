@@ -5,7 +5,6 @@
 local M = {}
 
 M.ui = {
-  theme = "catppuccin",
   telescope = {
     style = "bordered",
   },
@@ -35,11 +34,15 @@ M.ui = {
       "⢀⣤⣤⣄⣀⣀⠉⣙⣿⣿⣿⣿⣋⣿⣟⡈⢻⣿⣿⣿⡟⠁⠀⠀⠀⠀⠀⣀⣴⡟⠡⠞⠁⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠎⠀",
     },
   },
-  transparency = true,
   -- hl_override = {
   -- 	Comment = { italic = true },
   -- 	["@comment"] = { italic = true },
   -- },
+}
+
+M.base46 = {
+  theme = "catppuccin",
+  transparency = true,
 }
 
 return M
