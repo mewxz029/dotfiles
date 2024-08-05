@@ -5,6 +5,10 @@ return {
     opts = function()
       local config = require "nvchad.configs.nvimtree"
 
+      config.filters = {
+        dotfiles = false,
+      }
+
       config.git = {
         ignore = false,
       }
