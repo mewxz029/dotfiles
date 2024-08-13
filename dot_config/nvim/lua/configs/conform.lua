@@ -4,7 +4,7 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     typescript = {
-      -- { "prettierd", "prettier" },
+      { "prettierd", "prettier" },
       "eslint_d",
     },
     javascript = {
