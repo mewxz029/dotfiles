@@ -4,18 +4,22 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     typescript = {
-      { "prettierd", "prettier" },
+      "prettierd",
+      "prettier",
       "eslint_d",
     },
     javascript = {
-      { "prettierd", "prettier" },
+      "prettierd",
+      "prettier",
       "eslint_d",
     },
     vue = {
-      { "prettierd", "prettier" },
+      "prettierd",
+      "prettier",
       "eslint_d",
     },
     json = { "prettier" },
+    go = { "gofumpt", "goimports-reviser", "golines" },
   },
 
   format_on_save = {

@@ -42,6 +42,7 @@ local function rename_file()
   vim.lsp.buf.execute_command(params)
 end
 
+local util = require "lspconfig/util"
 local mason_registry = require "mason-registry"
 local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
   .. "/node_modules/@vue/language-server"
@@ -84,6 +85,19 @@ local servers = {
   tailwindcss = {
     autostart = true,
     filetypes = { "html", "vue" },
+  },
+  gopls = {
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+    settings = {
+      gopls = {
+        completeUnimported = true,
+        usePlaceholders = true,
+        analyses = {
+          unusedparams = true,
+        },
+      },
+    },
   },
 }
 
