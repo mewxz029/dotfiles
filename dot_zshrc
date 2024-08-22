@@ -13,6 +13,10 @@
 # Using Starship
 eval "$(starship init zsh)"
 
+# Setup Locale Lang
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # history setup
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
