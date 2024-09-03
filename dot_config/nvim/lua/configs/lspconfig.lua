@@ -62,7 +62,7 @@ local servers = {
         description = "Rename File",
       },
     },
-    filetypes = { "javascript", "typescript", "vue" },
+    filetypes = { "javascript", "typescript", "vue", "typescriptreact", "typescript.tsx" },
     init_options = {
       plugins = {
         {
