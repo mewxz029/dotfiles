@@ -51,7 +51,7 @@ local servers = {
   html = {},
   cssls = {},
 
-  tsserver = {
+  ts_ls = {
     commands = {
       OrganizeImports = {
         organize_imports,
