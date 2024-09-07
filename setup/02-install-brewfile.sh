@@ -7,7 +7,7 @@ then
   echo $DIR_BREWFILE
   echo "🟣 installing brewfile"
 
-  yes | brew bundle install --file=$DIR_BREWFILE
+  brew bundle install --file=$DIR_BREWFILE
 
   echo "✅ brewfile installed!"
   exit 0
