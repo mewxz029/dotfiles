@@ -21,25 +21,6 @@ return {
 
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "lua-language-server",
-        "stylua",
-        "html-lsp",
-        "css-lsp",
-        "prettier",
-        "prettierd",
-        "eslint_d",
-        "typescript-language-server",
-        "tailwindcss-language-server",
-        "vue-language-server",
-        "eslint-lsp",
-        "codespell",
-        "cspell",
-        "gopls",
-        "rust-analyzer",
-      },
-    },
   },
 
   {
@@ -70,7 +51,13 @@ return {
 
   {
     "nvimtools/none-ls.nvim",
-    dependencies = { "mason.nvim", "davidmh/cspell.nvim", "nvimtools/none-ls-extras.nvim" },
+    dependencies = {
+      "mason.nvim",
+      "davidmh/cspell.nvim",
+      "nvimtools/none-ls-extras.nvim",
+      "nvim-lua/plenary.nvim",
+      "jose-elias-alvarez/null-ls.nvim",
+    },
     event = { "BufReadPre", "BufNewFile" },
     opts = function()
       local cspell = require "cspell"

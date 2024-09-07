@@ -45,4 +45,25 @@ M.base46 = {
   transparency = true,
 }
 
+M.mason = {
+  pkgs = {
+    "lua-language-server",
+    "stylua",
+    "html-lsp",
+    "css-lsp",
+    "prettier",
+    "prettierd",
+    "eslint_d",
+    "typescript-language-server",
+    "tailwindcss-language-server",
+    "vue-language-server",
+    "eslint-lsp",
+    "codespell",
+    "cspell",
+    "gopls",
+    "rust-analyzer",
+    "codelldb",
+  },
+}
+
 return M
