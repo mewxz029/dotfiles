@@ -15,4 +15,11 @@ map("n", "<leader>dus", function()
   sidebar.open()
 end, { desc = "Open debugging sidebar" })
 
+map("v", "<leader>sc", function()
+  require("nvim-silicon").clip()
+end, { desc = "Copy code screenshot to clipboard" })
+map("v", "<leader>sf", function()
+  require("nvim-silicon").file()
+end, { desc = "Save code screenshot as file" })
+
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
