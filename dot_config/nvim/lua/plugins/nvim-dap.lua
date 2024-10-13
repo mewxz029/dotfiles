@@ -15,35 +15,53 @@ return {
       dap.listeners.before.event_exited.dapui_config = function()
         dapui.close()
       end
+
+      -- Go DAP configuration
+      dap.adapters.delve = function(callback, config)
+        if config.mode == "remote" and config.request == "attach" then
+          callback {
+            type = "server",
+            host = config.host or "127.0.0.1",
+            port = config.port or "38697",
+          }
+        else
+          callback {
+            type = "server",
+            port = "${port}",
+            executable = {
+              command = "dlv",
+              args = { "dap", "-l", "127.0.0.1:${port}", "--log", "--log-output=dap" },
+              detached = vim.fn.has "win32" == 0,
+            },
+          }
+        end
+      end
+
+      -- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
+      dap.configurations.go = {
+        {
+          type = "delve",
+          name = "Debug",
+          request = "launch",
+          program = "${file}",
+        },
+        {
+          type = "delve",
+          name = "Debug test", -- configuration for debugging test files
+          request = "launch",
+          mode = "test",
+          program = "${file}",
+        },
+        -- works with go.mod packages and sub packages
+        {
+          type = "delve",
+          name = "Debug test (go.mod)",
+          request = "launch",
+          mode = "test",
+          program = "./${relativeFileDirname}",
+        },
+      }
     end,
-    -- config = function()
-    --   local dap = require "dap"
-    --   -- Adapters
-    --   -- C, C++, Rust
-    --   local codelldb = require("mason-registry").get_package("codelldb"):get_install_path() .. "/codelldb"
-    --   dap.adapters.codelldb = {
-    --     type = "server",
-    --     port = "${port}",
-    --     executable = {
-    --       command = codelldb,
-    --       args = { "--port", "${port}" },
-    --     },
-    --   }
-    --
-    --   dap.configurations.rust = {
-    --     {
-    --       name = "Launch",
-    --       type = "codelldb",
-    --       request = "launch",
-    --       program = function()
-    --         return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-    --       end,
-    --       cwd = "${workspaceFolder}",
-    --       stopOnEntry = false,
-    --       targetArchitecture = "arm64",
-    --     },
-    --   }
-    -- end,
   },
   {
     "rcarriga/nvim-dap-ui",
@@ -52,11 +70,4 @@ return {
       require("dapui").setup()
     end,
   },
-  -- {
-  --   "theHamsta/nvim-dap-virtual-text",
-  --   lazy = false,
-  --   config = function(_, opts)
-  --     require("nvim-dap-virtual-text").setup()
-  --   end,
-  -- },
 }
