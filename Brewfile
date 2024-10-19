@@ -17,6 +17,7 @@ brew "neovim"
 brew "nmap"
 brew "node"
 brew "nvm"
+brew "ollama"
 brew "pnpm"
 brew "ripgrep"
 brew "silicon"
@@ -47,6 +48,7 @@ cask "spotify"
 cask "visual-studio-code"
 mas "LINE", id: 539883307
 mas "Microsoft Remote Desktop", id: 1295203466
+mas "Windows App", id: 1295203466
 vscode "aaron-bond.better-comments"
 vscode "alexcvzz.vscode-sqlite"
 vscode "aryatholiya12345.orange-black-theme"
