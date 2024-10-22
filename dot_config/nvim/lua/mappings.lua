@@ -3,7 +3,7 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 
 -- General Key Mappings
-map("n", ";", ":", { desc = "CMD enter command mode" })
+-- map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 map("n", "<leader>ft", ":TodoTelescope<CR>")
 
