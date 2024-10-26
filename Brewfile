@@ -46,8 +46,9 @@ cask "netdownloadhelpercoapp"
 cask "postman"
 cask "spotify"
 cask "visual-studio-code"
+mas "Keynote", id: 409183694
 mas "LINE", id: 539883307
-mas "Microsoft Remote Desktop", id: 1295203466
+mas "Numbers", id: 409203825
 mas "Windows App", id: 1295203466
 vscode "aaron-bond.better-comments"
 vscode "alexcvzz.vscode-sqlite"
