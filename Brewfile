@@ -45,6 +45,7 @@ cask "mongodb-compass"
 cask "netdownloadhelpercoapp"
 cask "postman"
 cask "spotify"
+cask "the-unarchiver"
 cask "visual-studio-code"
 mas "Keynote", id: 409183694
 mas "LINE", id: 539883307
