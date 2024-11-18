@@ -46,3 +46,20 @@ map("n", "<leader>ccml", vim.cmd.CopilotChatModels, { desc = "CopilotChat - Mode
 map("n", "<leader>cct", vim.cmd.CopilotChatTests, { desc = "CopilotChat - Generate Test for Code" })
 map("v", "<leader>cce", vim.cmd.CopilotChatExplain, { desc = "CopilotChat - Explain Selected Code" })
 map("v", "<leader>ccr", vim.cmd.CopilotChatReview, { desc = "CopilotChat - Review Selected Code" })
+
+-- Spectre Mappings
+map("n", "<leader>st", function()
+  require("spectre").toggle()
+end, { desc = "Spectre - Search Toggle" })
+map("n", "<leader>sw", function()
+  require("spectre").open_visual { select_word = true }
+end, { desc = "Spectre - Search Current Word" })
+map("n", "<leader>sp", function()
+  require("spectre").open_file_search { select_word = true }
+end, { desc = "Spectre - Search Current File" })
+map("v", "<leader>sw", function()
+  require("spectre").open_visual()
+end, { desc = "Spectre - Search Current Word" })
+
+-- Trouble Mappings
+map("n", "<leader>tt", ":Trouble<CR>", { desc = "Trouble - Toggle" })
