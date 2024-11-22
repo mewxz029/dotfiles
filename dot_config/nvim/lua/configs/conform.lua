@@ -4,19 +4,22 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     typescript = {
+      "eslint_d",
       "prettierd",
       "prettier",
-      "eslint_d",
+      stop_after_first = true,
     },
     javascript = {
+      "eslint_d",
       "prettierd",
       "prettier",
-      "eslint_d",
+      stop_after_first = true,
     },
     vue = {
+      "eslint_d",
       "prettierd",
       "prettier",
-      "eslint_d",
+      stop_after_first = true,
     },
     json = { "prettier" },
     go = { "gofumpt", "goimports-reviser", "golines" },
@@ -26,6 +29,16 @@ local options = {
     -- These options will be passed to conform.format()
     timeout_ms = 500,
     lsp_fallback = true,
+  },
+
+  formatters = {
+    eslint_d = {
+      format_on_save = {
+        timeout_ms = 1000,
+        lsp_fallback = true,
+        async = true,
+      },
+    },
   },
 }
 
