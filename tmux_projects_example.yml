@@ -1,0 +1,10 @@
+projects:
+  project-name:
+    sessions:
+      - session-name: example-api
+        path: $HOME/example-api/
+        additional-commands:
+          - tmux send-keys -t $SESSION_NAME:1.0 'nvm use 18' C-m
+      - session-name: example-web
+        path: $HOME/example-web/
+
