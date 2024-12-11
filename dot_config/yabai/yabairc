@@ -32,3 +32,4 @@ yabai -m rule --add app="^iPhone Mirroring$" manage=off
 yabai -m rule --add app="^.*Chromium.*$" manage=off
 yabai -m rule --add app="^.*Nightly.*$" manage=off
 yabai -m rule --add app="^.*Playwright.*$" manage=off
+yabai -m rule --add app="^.*League of Legends.*$" manage=off
