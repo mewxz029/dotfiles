@@ -144,8 +144,11 @@ alt-d = "focus-monitor down"
 alt-f = "focus-monitor up"
 
 # workspace next and prev
-ctrl-alt-h = "workspace --wrap-around prev"
-ctrl-alt-l = "workspace --wrap-around next"
+alt-p = "workspace --wrap-around prev"
+alt-n = "workspace --wrap-around next"
+
+alt-shift-p = "move-node-to-workspace --focus-follows-window prev"
+alt-shift-n = "move-node-to-workspace --focus-follows-window next"
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
