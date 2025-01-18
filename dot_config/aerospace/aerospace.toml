@@ -124,8 +124,6 @@ alt-6 = 'workspace 6'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
-alt-w = "workspace W"
-alt-t = "workspace T"
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
@@ -137,8 +135,6 @@ alt-shift-6 = 'move-node-to-workspace 6'
 alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
-alt-shift-w = "move-node-to-workspace W"
-alt-shift-t = "move-node-to-workspace T"
 
 alt-shift-f = 'fullscreen'
 
@@ -181,16 +177,27 @@ shift-down = ['volume set 0', 'mode main']
 
 [workspace-to-monitor-force-assignment]
     1 = 'main'                       # Main monitor
-    2 = 'secondary'                  # Non-main monitor in case when there are only two monitors
+    6 = 'secondary'                  # Non-main monitor in case when there are only two monitors
+    7 = 'secondary'
+    8 = 'secondary'
+    9 = 'secondary'
 
 [[on-window-detected]]
-if.app-id = "jp.naver.line.mac"
-run = "layout floating"
+if.app-id = "com.hnc.Discord"
+run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
 if.app-id = "company.thebrowser.Browser"
-run = "move-node-to-workspace W"
+run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
 if.app-id = "net.kovidgoyal.kitty"
-run = "move-node-to-workspace T"
+run = "move-node-to-workspace 3"
+
+[[on-window-detected]]
+if.app-id = "com.spotify.client"
+run = "move-node-to-workspace 4"
+
+[[on-window-detected]]
+if.app-id = "jp.naver.line.mac"
+run = ["layout floating", "move-node-to-workspace 5"]
