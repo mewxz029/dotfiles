@@ -136,12 +136,16 @@ alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
 
-alt-shift-f = 'fullscreen'
+alt-m = 'fullscreen'
 
 alt-s = "focus-monitor left"
 alt-g = "focus-monitor right"
 alt-d = "focus-monitor down"
 alt-f = "focus-monitor up"
+alt-shift-s = "move-node-to-monitor --focus-follows-window left"
+alt-shift-g = "move-node-to-monitor --focus-follows-window right"
+alt-shift-d = "move-node-to-monitor --focus-follows-window down"
+alt-shift-f = "move-node-to-monitor --focus-follows-window up"
 
 # workspace next and prev
 alt-p = "workspace --wrap-around prev"
