@@ -63,3 +63,6 @@ end, { desc = "Spectre - Search Current Word" })
 
 -- Trouble Mappings
 map("n", "<leader>tt", ":Trouble<CR>", { desc = "Trouble - Toggle" })
+
+-- Git Signs Mappings
+map("n", "<leader>gb", ":Gitsigns blame_line<CR>", { desc = "Git blame line" })
