@@ -56,7 +56,7 @@ return {
       "davidmh/cspell.nvim",
       "nvimtools/none-ls-extras.nvim",
       "nvim-lua/plenary.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
+      -- "jose-elias-alvarez/null-ls.nvim",
     },
     event = { "BufReadPre", "BufNewFile" },
     opts = function()
