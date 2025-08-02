@@ -6,7 +6,15 @@ local function organize_imports()
     arguments = { vim.api.nvim_buf_get_name(0) },
     title = "",
   }
-  vim.lsp.buf.execute_command(params)
+
+  local clients = vim.lsp.get_clients { name = "ts_ls" }
+  if #clients == 0 then
+    vim.notify("No ts_ls client found", vim.log.levels.ERROR)
+    return
+  end
+  local client = clients[1]
+  client:exec_cmd(params)
+  vim.notify("Imports sorted", vim.log.levels.INFO)
 end
 
 local function rename_file()
@@ -39,12 +47,18 @@ local function rename_file()
   }
 
   vim.lsp.util.rename(source_file, target_file)
-  vim.lsp.buf.execute_command(params)
+  local clients = vim.lsp.get_clients { name = "ts_ls" }
+  if #clients == 0 then
+    vim.notify("No ts_ls client found", vim.log.levels.ERROR)
+    return
+  end
+  local client = clients[1]
+  client:exec_cmd(params)
+  vim.notify("Rename files", vim.log.levels.INFO)
 end
 
 local util = require "lspconfig/util"
-local mason_registry = require "mason-registry"
-local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
+local vue_language_server_path = vim.fn.expand "$MASON/packages/vue-language-server"
   .. "/node_modules/@vue/language-server"
 
 local servers = {
