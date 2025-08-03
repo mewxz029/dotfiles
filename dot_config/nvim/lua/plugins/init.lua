@@ -43,6 +43,8 @@ return {
         "gotmpl",
         "gowork",
         "rust",
+        "nginx",
+        "proto",
       },
       highlight = { enable = true },
       indent = { enable = true },
