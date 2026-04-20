@@ -33,20 +33,6 @@ map("n", "<Leader>dr", "<cmd>lua require'dap'.run_last()<CR>", { desc = "Debugge
 -- rustaceanvim Mappings
 map("n", "<Leader>dtr", "<cmd>lua vim.cmd('RustLsp testables')<CR>", { desc = "Debugger testables Rust" })
 
--- Copilot Chat Mappings
-map("n", "<leader>ccq", function()
-  local input = vim.fn.input "Quick Chat: "
-  if input ~= "" then
-    require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
-  end
-end, { desc = "CopilotChat - Quick Chat" })
-map("n", "<leader>cco", vim.cmd.CopilotChatOpen, { desc = "CopilotChat - Open Chat" })
-map("n", "<leader>ccmc", vim.cmd.CopilotChatModel, { desc = "CopilotChat - Show current model" })
-map("n", "<leader>ccml", vim.cmd.CopilotChatModels, { desc = "CopilotChat - Model Lists" })
-map("n", "<leader>cct", vim.cmd.CopilotChatTests, { desc = "CopilotChat - Generate Test for Code" })
-map("v", "<leader>cce", vim.cmd.CopilotChatExplain, { desc = "CopilotChat - Explain Selected Code" })
-map("v", "<leader>ccr", vim.cmd.CopilotChatReview, { desc = "CopilotChat - Review Selected Code" })
-
 -- Spectre Mappings
 map("n", "<leader>st", function()
   require("spectre").toggle()
@@ -66,3 +52,6 @@ map("n", "<leader>tt", ":Trouble<CR>", { desc = "Trouble - Toggle" })
 
 -- Git Signs Mappings
 map("n", "<leader>gb", ":Gitsigns blame_line<CR>", { desc = "Git blame line" })
+
+-- Code Action
+map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
