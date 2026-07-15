@@ -8,7 +8,11 @@ local vueLsConfig = require "lsp.vue_ls"
 vim.lsp.config("vue_ls", vueLsConfig)
 vim.lsp.enable "vue_ls"
 
-local servers = { "html", "cssls", "tailwindcss", "gopls", "jsonls", "codebook", "oxlint" }
+local prismaLsConfig = require "lsp.prismals"
+vim.lsp.config("prismals", prismaLsConfig)
+vim.lsp.enable "prismals"
+
+local servers = { "html", "cssls", "tailwindcss", "gopls", "jsonls", "codebook", "oxlint", "eslint" }
 
 -- local function organize_imports()
 --   local params = {

@@ -8,14 +8,8 @@ return {
   },
   {
     "mrcjkb/rustaceanvim",
-    version = "^5", -- Recommended
+    version = "^9", -- Recommended
     lazy = false, -- This plugin is already lazy
-    ["rust-analyzer"] = {
-      cargo = {
-        allFeatures = true,
-      },
-      checkOnSave = true,
-    },
     config = function()
       local extension_path = vim.fn.expand "$MASON/packages/codelldb" .. "/extension/"
       local codelldb_path = extension_path .. "adapter/codelldb"
@@ -23,6 +17,16 @@ return {
       local cfg = require "rustaceanvim.config"
 
       vim.g.rustaceanvim = {
+        server = {
+          default_settings = {
+            ["rust-analyzer"] = {
+              cargo = {
+                allFeatures = true,
+              },
+              checkOnSave = true,
+            },
+          },
+        },
         dap = {
           adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
         },
