@@ -8,5 +8,25 @@
     },
     "bash": "ask",
     "edit": "ask"
+  },
+  "lsp": {
+    "go": {
+      "command": ["~/.local/share/nvim/mason/bin/gopls", "--stdio"],
+      "extensions": [".go"]
+    }
+  },
+  "provider": {
+    "litellm": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "9arm AI Passport",
+      "options": {
+        "baseURL": "https://gateway.9arm.co/v1"
+      },
+      "models": {
+        "qwen3.6-35b-a3b": {
+          "name": "Qwen3.6-35B-A3B"
+        }
+      }
+    }
   }
 }
