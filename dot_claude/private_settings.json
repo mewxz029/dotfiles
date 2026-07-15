@@ -1,16 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
-    "deny": [
-      "Read(**/.env*)",
-      "Read(**/*.pem)",
-      "Read(**/*.key)",
-      "Read(**/secrets/**)",
-      "Read(**/credentials/**)",
-      "Read(**/.aws/**)",
-      "Read(**/.ssh/**)",
-      "Read(**/*service-account*.json)"
-    ],
     "allow": [
       "Bash(rtk ls *)",
       "Bash(rtk cat *)",
@@ -19,10 +9,26 @@
       "Bash(rtk git diff *)",
       "Bash(rtk git log *)",
       "Bash(rtk go test *)",
-      "Bash(rtk docker ps *)"
+      "Bash(rtk docker ps *)",
+      "Read(**/.env.example)",
+      "Write(**/.env.example)"
+    ],
+    "deny": [
+      "Read(**/.env)",
+      "Write(**/.env)",
+      "Read(**/.env.production)",
+      "Write(**/.env.production)",
+      "Read(**/.env.staging)",
+      "Write(**/.env.staging)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(**/secrets/**)",
+      "Read(**/credentials/**)",
+      "Read(**/.aws/**)",
+      "Read(**/.ssh/**)",
+      "Read(**/*service-account*.json)"
     ]
   },
-  "model": "sonnet",
   "hooks": {
     "Stop": [
       {
@@ -30,7 +36,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "say \"Claude has finished the work.\""
+            "command": "afplay ~/.claude/sounds/decision.mp3"
           }
         ]
       }
@@ -41,7 +47,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "say \"Claude need your decision.\""
+            "command": "afplay ~/.claude/sounds/decision.mp3"
           }
         ]
       }
@@ -58,6 +64,40 @@
       }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "caveman@caveman": true,
+    "andrej-karpathy-skills@karpathy-skills": true,
+    "figma@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "vercel@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
+      }
+    },
+    "testcontainers-claude-skills": {
+      "source": {
+        "source": "github",
+        "repo": "testcontainers/claude-skills"
+      }
+    }
+  },
+  "advisorModel": "fable",
+  "tui": "fullscreen",
+  "theme": "dark",
+  "editorMode": "vim",
+  "autoCompactEnabled": false,
+  "skipAutoPermissionPrompt": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754319921121
   }
