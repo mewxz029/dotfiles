@@ -11,15 +11,15 @@
       "Bash(rtk go test *)",
       "Bash(rtk docker ps *)",
       "Read(**/.env.example)",
-      "Write(**/.env.example)"
+      "Edit(**/.env.example)"
     ],
     "deny": [
       "Read(**/.env)",
-      "Write(**/.env)",
+      "Edit(**/.env)",
       "Read(**/.env.production)",
-      "Write(**/.env.production)",
+      "Edit(**/.env.production)",
       "Read(**/.env.staging)",
-      "Write(**/.env.staging)",
+      "Edit(**/.env.staging)",
       "Read(**/*.pem)",
       "Read(**/*.key)",
       "Read(**/secrets/**)",

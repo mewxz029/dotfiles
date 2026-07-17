@@ -17,18 +17,17 @@
 
 Formatter config: `lua/configs/conform.lua`
 
-## Linting & Spell Check
+## Linting
 
-- cspell via none-ls.nvim with `cspell.json` dictionary (Thai chars ignored, `folke`/`codespell`/`tailwindcss`/`nvim` whitelisted)
-- Spell check runs on save; unknown words shown as HINT severity
+- `cspell.json` dictionary exists (Thai chars ignored, `folke`/`codespell`/`tailwindcss`/`nvim` whitelisted) but is not currently wired up — no plugin consumes it. Spell checking is not active.
 
 ## LSP & Mason
 
 LSP servers installed via Mason (`lua/chadrc.lua:mason.pkgs`):
-`lua-language-server`, `typescript-language-server`, `gopls`, `rust-analyzer`, `vue-language-server`, `tailwindcss-language-server`, `html-lsp`, `css-lsp`, `eslint-lsp`, `prettierd`, `codespell`, `cspell`, `codelldb`
+`lua-language-server`, `html-lsp`, `css-lsp`, `prettier`, `prettierd`, `eslint_d`, `tailwindcss-language-server`, `vue-language-server`, `eslint-lsp`, `gopls`, `rust-analyzer`, `codelldb`, `vtsls`, `json-lsp`, `oxlint`, `oxfmt`, `codebook`, `prisma-language-server`
 
 LSP config: `lua/configs/lspconfig.lua`
-Custom LSP configs: `lua/lsp/` (vtsls, vue_ls)
+Custom LSP configs: `lua/lsp/` (vtsls, vue_ls, prismals)
 
 ## Debugging (DAP)
 
@@ -41,6 +40,7 @@ Custom LSP configs: `lua/lsp/` (vtsls, vue_ls)
 
 - Leader key: `<Space>`
 - Custom mappings in `lua/mappings.lua`
+- Keymap pattern: most keymaps centralized in `lua/mappings.lua`; plugins that need lazy-load-on-keypress (e.g. `flash-nvim.lua`) declare their own `keys = {...}` in the plugin spec instead — both are intentional, not inconsistent
 - Plugin specs in `lua/plugins/` (one file per plugin/group)
 - Plugin config modules in `lua/configs/`
 - Theme/custom NvChad overrides in `lua/chadrc.lua`

@@ -39,6 +39,7 @@ M.mason = {
     "oxlint",
     "oxfmt",
     "codebook",
+    "prisma-language-server",
   },
 }
 
