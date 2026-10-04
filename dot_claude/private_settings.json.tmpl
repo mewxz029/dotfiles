@@ -30,21 +30,6 @@
     ]
   },
   "hooks": {
-{{- $herdrHook := joinPath .chezmoi.homeDir ".claude/hooks/herdr-agent-state.sh" }}
-{{- if stat $herdrHook }}
-    "SessionStart": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash '{{ $herdrHook }}' session",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
-{{- end }}
     "PreToolUse": [
       {
         "matcher": "Bash",
@@ -56,6 +41,21 @@
         ]
       }
     ]
+{{- $herdrHook := joinPath .chezmoi.homeDir ".claude/hooks/herdr-agent-state.sh" }}
+{{- if stat $herdrHook }},
+    "SessionStart": [
+      {
+        "matcher": "^(startup|resume|clear|compact|fork)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '{{ $herdrHook }}' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+{{- end }}
   },
   "statusLine": {
     "type": "command",
