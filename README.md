@@ -8,7 +8,7 @@ Use [Chezmoi](https://www.chezmoi.io) to bootstrap this configuration on your ma
 sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init --apply mewxz029
 ```
 
-This installs chezmoi to `~/.local/bin` (already on `PATH` in `.zshrc`) and asks whether this is the `personal` or `work` machine. Once Homebrew is set up, `brew "chezmoi"` from the Brewfile takes over.
+This installs chezmoi to `~/.local/bin` (already on `PATH` in `.zshrc`) and asks whether this is the `personal` or `work` machine. After the Brewfile installs `chezmoi`, run `rm ~/.local/bin/chezmoi` so the Homebrew copy (updated by `brew upgrade`) is used instead.
 
 ## Personal vs work machine
 
