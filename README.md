@@ -2,7 +2,13 @@
 
 ## How to use this configuration on my machine?
 
-Use [Chezmoi](https://www.chezmoi.io) to bootstrap this configuration on your machine: `sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply mewxz029`
+Use [Chezmoi](https://www.chezmoi.io) to bootstrap this configuration on your machine:
+
+```sh
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init --apply mewxz029
+```
+
+This installs chezmoi to `~/.local/bin` (already on `PATH` in `.zshrc`) and asks whether this is the `personal` or `work` machine. Once Homebrew is set up, `brew "chezmoi"` from the Brewfile takes over.
 
 ## Personal vs work machine
 
