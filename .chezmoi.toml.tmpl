@@ -1,2 +1,8 @@
+{{- $machine := promptChoiceOnce . "machine" "Which machine is this" (list "personal" "work") -}}
+
+[data]
+    machine = {{ $machine | quote }}
+    work = {{ eq $machine "work" }}
+
 [edit]
 	command = "nvim"

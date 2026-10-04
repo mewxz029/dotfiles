@@ -4,7 +4,9 @@ tap "jesseduffield/lazydocker"
 tap "koekeishiya/formulae"
 tap "minio/stable"
 tap "mongodb/brew"
+{{ if not .work -}}
 tap "netbirdio/tap"
+{{ end -}}
 tap "nikitabobko/tap"
 tap "oven-sh/bun"
 brew "bison"
@@ -57,7 +59,9 @@ brew "oven-sh/bun/bun"
 cask "aerospace"
 cask "arc"
 cask "azure-data-studio"
+{{ if not .work -}}
 cask "calibre"
+{{ end -}}
 cask "claude-code"
 cask "devtunnel"
 cask "discord"
@@ -66,7 +70,9 @@ cask "font-meslo-lg-nerd-font"
 cask "google-chrome"
 cask "kitty"
 cask "mongodb-compass"
+{{ if not .work -}}
 cask "netbird-ui"
+{{ end -}}
 cask "netdownloadhelpercoapp"
 cask "ngrok"
 cask "obsidian"
@@ -78,11 +84,19 @@ cask "the-unarchiver"
 cask "visual-studio-code"
 cask "zed"
 cask "zoom"
+{{ if not .work -}}
 mas "Brother iPrint&Scan", id: 1193539993
+{{ end -}}
+{{ if not .work -}}
 mas "DaVinci Resolve", id: 571213070
+{{ end -}}
 mas "Keynote", id: 409183694
 mas "LINE", id: 539883307
 mas "Numbers", id: 409203825
+{{ if .work -}}
+mas "Pages", id: 409201541
+mas "PDF Reader Pro", id: 919472673
+{{ end -}}
 vscode "aaron-bond.better-comments"
 vscode "alexcvzz.vscode-sqlite"
 vscode "aryatholiya12345.orange-black-theme"

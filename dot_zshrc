@@ -31,12 +31,12 @@ setopt hist_verify
 bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# zsh-autocomplete runs compinit itself; add extra completions to FPATH before it loads
+FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
 source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-alias ls="eza --color=always --long --no-filesize --icons=always --no-time --no-user --no-permissions"
-
-# alias cd="z"
+alias eza="eza --color=always --icons=always"
 
 eval "$(zoxide init zsh)"
 
@@ -53,17 +53,19 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-  autoload -Uz compinit
-  compinit
-fi
 export PATH="/opt/homebrew/opt/bison/bin:$PATH"
 
-[[ -s "/Users/mewxz029/.gvm/scripts/gvm" ]] && source "/Users/mewxz029/.gvm/scripts/gvm"
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 export PATH="$(go env GOPATH)/bin:$PATH"
 export PATH="/opt/homebrew/opt/unzip/bin:$PATH"
 export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+
+# 1Password SSH agent, only where 1Password is running its agent
+op_sock=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+[[ -S $op_sock ]] && export SSH_AUTH_SOCK=$op_sock
+unset op_sock
+
+# Machine-only settings (work git identities, secrets); not tracked by chezmoi
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

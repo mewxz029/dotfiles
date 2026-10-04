@@ -30,28 +30,21 @@
     ]
   },
   "hooks": {
-    "Stop": [
+{{- $herdrHook := joinPath .chezmoi.homeDir ".claude/hooks/herdr-agent-state.sh" }}
+{{- if stat $herdrHook }}
+    "SessionStart": [
       {
         "matcher": "*",
         "hooks": [
           {
             "type": "command",
-            "command": "afplay ~/.claude/sounds/decision.mp3"
+            "command": "bash '{{ $herdrHook }}' session",
+            "timeout": 10
           }
         ]
       }
     ],
-    "Notification": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "afplay ~/.claude/sounds/decision.mp3"
-          }
-        ]
-      }
-    ],
+{{- end }}
     "PreToolUse": [
       {
         "matcher": "Bash",
@@ -96,8 +89,24 @@
   "tui": "fullscreen",
   "theme": "dark",
   "editorMode": "vim",
-  "autoCompactEnabled": false,
+  "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "medium"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
+  "autoCompactWindow": 900000,
+  "autoCompactEnabled": true,
+  "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
+{{- /* Machine-only autoMode rules live outside the repo; see README */}}
+{{- $autoMode := joinPath .chezmoi.homeDir ".config/chezmoi/claude-automode.json" }}
+{{- if stat $autoMode }}
+  "autoMode": {{ include $autoMode | trim }},
+{{- end }}
   "feedbackSurveyState": {
     "lastShownTime": 1754319921121
   }
