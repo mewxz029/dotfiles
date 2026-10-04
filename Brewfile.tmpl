@@ -1,14 +1,14 @@
-tap "anomalyco/tap"
+tap "anomalyco/tap", trusted: true
 tap "homebrew/bundle"
-tap "jesseduffield/lazydocker"
-tap "koekeishiya/formulae"
-tap "minio/stable"
-tap "mongodb/brew"
+tap "jesseduffield/lazydocker", trusted: true
+tap "koekeishiya/formulae", trusted: true
+tap "minio/stable", trusted: true
+tap "mongodb/brew", trusted: true
 {{ if not .work -}}
-tap "netbirdio/tap"
+tap "netbirdio/tap", trusted: true
 {{ end -}}
-tap "nikitabobko/tap"
-tap "oven-sh/bun"
+tap "nikitabobko/tap", trusted: true
+tap "oven-sh/bun", trusted: true
 brew "bison"
 brew "chezmoi"
 brew "eza"
