@@ -1,7 +1,6 @@
 tap "anomalyco/tap", trusted: true
 tap "jesseduffield/lazydocker", trusted: true
 tap "koekeishiya/formulae", trusted: true
-tap "minio/stable", trusted: true
 tap "mongodb/brew", trusted: true
 {{ if not .work -}}
 tap "netbirdio/tap", trusted: true
@@ -51,18 +50,13 @@ brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 brew "anomalyco/tap/opencode"
 brew "jesseduffield/lazydocker/lazydocker"
-brew "minio/stable/mc"
 brew "mongodb/brew/mongodb-database-tools"
 brew "oven-sh/bun/bun"
 cask "1password"
 cask "1password-cli"
 cask "aerospace"
 cask "arc"
-cask "azure-data-studio"
 cask "bruno"
-{{ if not .work -}}
-cask "calibre"
-{{ end -}}
 cask "claude-code"
 cask "devtunnel"
 cask "discord"
@@ -76,7 +70,6 @@ cask "mongodb-compass"
 {{ if not .work -}}
 cask "netbird-ui"
 {{ end -}}
-cask "netdownloadhelpercoapp"
 cask "ngrok"
 cask "obsidian"
 cask "orbstack"
