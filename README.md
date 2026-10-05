@@ -36,7 +36,9 @@ Machine-only files, never committed:
 
 - [Zsh](https://www.zsh.org/) as the primary shell.
 
-- [Tmux](https://github.com/tmux/tmux) as the terminal multiplexer.
+- [herdr](https://herdr.dev) as the terminal multiplexer.
 
-  - [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) as the plugin manager.
+**Runtimes**
+
+- [mise](https://mise.jdx.dev) for language runtime versions (Node). Global versions live in `dot_config/mise/config.toml`. See `setup/07-install-mise.md`.
 

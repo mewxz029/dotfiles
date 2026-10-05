@@ -1,66 +1,41 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-#
-# source /usr/local/share/powerlevel10k/powerlevel10k.zsh-theme
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Keep PATH entries unique (.zprofile also adds some)
+typeset -U path
 
 # Using Starship
 eval "$(starship init zsh)"
 
 # Setup Locale Lang
-export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # history setup
 HISTFILE=$HOME/.zhistory
-SAVEHIST=1000
-HISTSIZE=999
+HISTSIZE=60000
+SAVEHIST=50000
 setopt share_history
 setopt hist_expire_dups_first
-setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
 setopt hist_verify
 
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# zsh-autocomplete runs compinit itself and binds the Up/Down arrow keys
+source $HOMEBREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
-
-bindkey "^[[A" history-search-backward
-bindkey "^[[B" history-search-forward
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# zsh-autocomplete runs compinit itself; add extra completions to FPATH before it loads
-FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
-source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-alias eza="eza --color=always --icons=always"
+alias eza="eza --color=auto --icons=auto"
 
 eval "$(zoxide init zsh)"
 
 alias code="open -b com.microsoft.VSCode"
-alias arm="env /usr/bin/arch -arm64 /bin/zsh --login"
-alias intel="env /usr/bin/arch -x86_64 /bin/zsh --login"
-alias killdocker="pkill -SIGHUP -f /Applications/Docker.app 'docker serve'"
 alias gitgraph="git log --oneline --graph --decorate --all"
-alias tmuxs="$HOME/setup_tmux_session.sh"
-alias kvim='NVIM_APPNAME="kickstart.nvim" nvim'
-alias mvim='NVIM_APPNAME="mewvim" nvim'
+alias kvim='NVIM_APPNAME="nvim-kickstart" nvim'
 
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-export PATH="/opt/homebrew/opt/bison/bin:$PATH"
-
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
-
-export PATH="$(go env GOPATH)/bin:$PATH"
-export PATH="/opt/homebrew/opt/unzip/bin:$PATH"
-export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
+# Array form so typeset -U drops duplicates (export PATH=... does not)
+path=(
+  $HOME/.local/bin
+  $HOMEBREW_PREFIX/opt/rustup/bin
+  ${GOPATH:-$HOME/go}/bin
+  $path
+)
 
 # mise tool versions; activate after other PATH edits so its tools come first
 command -v mise &>/dev/null && eval "$(mise activate zsh)"
@@ -72,3 +47,6 @@ unset op_sock
 
 # Machine-only settings (work git identities, secrets); not tracked by chezmoi
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# Must be sourced last, after every other widget is defined
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
