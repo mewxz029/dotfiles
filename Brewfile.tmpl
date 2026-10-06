@@ -2,9 +2,7 @@ tap "anomalyco/tap", trusted: true
 tap "jesseduffield/lazydocker", trusted: true
 tap "koekeishiya/formulae", trusted: true
 tap "mongodb/brew", trusted: true
-{{ if not .work -}}
 tap "netbirdio/tap", trusted: true
-{{ end -}}
 tap "nikitabobko/tap", trusted: true
 tap "oven-sh/bun", trusted: true
 brew "chezmoi"
@@ -67,9 +65,7 @@ cask "gcloud-cli"
 cask "google-chrome"
 cask "kitty"
 cask "mongodb-compass"
-{{ if not .work -}}
 cask "netbird-ui"
-{{ end -}}
 cask "ngrok"
 cask "obsidian"
 cask "orbstack"
