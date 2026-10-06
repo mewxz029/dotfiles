@@ -18,7 +18,9 @@ setopt hist_ignore_space
 setopt hist_verify
 
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# zsh-autocomplete runs compinit itself and binds the Up/Down arrow keys
+# zsh-autocomplete runs compinit itself and binds the Up/Down arrow keys.
+# It saves recent dirs here but never creates the directory.
+mkdir -p ${XDG_DATA_HOME:-$HOME/.local/share}/zsh
 source $HOMEBREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 alias eza="eza --color=auto --icons=auto"
