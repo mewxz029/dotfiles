@@ -1,2 +1,7 @@
 [tools]
-node = "20"
+go = "1.27.0"
+golangci-lint = "latest"
+node = "24"
+
+[settings]
+go_set_gobin = false
